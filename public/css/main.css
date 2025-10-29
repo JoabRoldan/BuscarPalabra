@@ -1,26 +1,19 @@
 body {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #7dd3fc, #4f46e5);
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
   color: #333;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-}
-
-.container {
-  max-width: 700px;
-  width: 100%;
+  padding: 30px;
 }
 
 .card {
-  background: #fff;
-  border: none;
   border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   overflow: hidden;
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
@@ -29,15 +22,9 @@ body {
 
 .card-header {
   background: #4f46e5;
-  color: #fff;
-  padding: 20px;
-  border-bottom: none;
-}
-
-.card-header h1 {
-  margin: 0;
-  font-size: 1.8rem;
-  letter-spacing: 1px;
+  color: white;
+  padding: 25px;
+  border: none;
 }
 
 textarea,
@@ -67,27 +54,6 @@ button {
   padding: 10px 16px;
 }
 
-#btn_buscar {
-  background: #4f46e5;
-  border: none;
-}
-
-#btn_buscar:hover {
-  background: #4338ca;
-  transform: scale(1.05);
-}
-
-#btn_limpiar {
-  border: 2px solid #4f46e5;
-  color: #4f46e5;
-}
-
-#btn_limpiar:hover {
-  background: #4f46e5;
-  color: #fff;
-  transform: scale(1.05);
-}
-
 #resultado {
   background-color: #f9fafb;
   border-radius: 10px;
@@ -96,7 +62,6 @@ button {
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
   font-size: 1rem;
   line-height: 1.6;
-  color: #333;
 }
 
 mark {
