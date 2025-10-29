@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buscador y Contador de Palabras</title>
+  <link rel="stylesheet" href="../public/css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header text-center">
+        <h1>Buscador y Contador de Palabras</h1>
+      </div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="bloque-texto"><strong>Ingresa el texto o párrafo aquí:</strong></label>
+          <textarea id="bloque-texto" rows="6" placeholder="Escribe o pega tu texto..."></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="in_palabra"><strong>Palabra a buscar:</strong></label>
+          <input type="text" id="in_palabra" placeholder="Escribe la palabra que quieres resaltar">
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4">
+          <button class="btn btn-primary" type="button" id="btn_buscar">Buscar y Resaltar</button>
+          <button class="btn btn-outline-secondary" type="button" id="btn_limpiar">Limpiar Todo</button>
+        </div>
+
+        <!-- NUEVA SECCIÓN -->
+        <div class="mb-3 p-3 bg-light rounded shadow-sm">
+          <label for="nueva_palabra"><strong>Reemplazar palabra más repetida por:</strong></label>
+          <input type="text" id="nueva_palabra" placeholder="Escribe la nueva palabra">
+          <button class="btn btn-success mt-2 w-100" id="btn_reemplazar">Reemplazar palabra más repetida</button>
+        </div>
+        <!-- FIN NUEVA SECCIÓN -->
+
+        <hr>
+
+        <div>
+          <h2>Resultado:</h2>
+          <div id="resultado">
+            <p class="text-muted">Aquí aparecerá el texto con la palabra resaltada.</p>
+          </div>
+          <p id="contador"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./bundle.js"></script>
+</body>
+</html>
