@@ -26,6 +26,6 @@
     "sass": "^1.92.1",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
-    "sweetalert2": "^11.25.0"
+    "sweetalert2": "^11.26.3"
   }
 }

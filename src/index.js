@@ -1,3 +1,8 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import "../dist/public/css/main.css";
+import Swal from 'sweetalert2';  
+
 // Obtener elementos del DOM
 const bloqueTexto = document.getElementById('bloque-texto');
 const inputPalabra = document.getElementById('in_palabra');
@@ -5,6 +10,8 @@ const botonBuscar = document.getElementById('btn_buscar');
 const botonLimpiar = document.getElementById('btn_limpiar');
 const resultado = document.getElementById('resultado');
 const contador = document.getElementById('contador');
+const nuevaPalabra = document.getElementById('nueva_palabra');
+const botonReemplazar = document.getElementById('btn_reemplazar');
 
 // Función principal de búsqueda
 botonBuscar.addEventListener('click', () => {
@@ -54,10 +61,51 @@ botonBuscar.addEventListener('click', () => {
   });
 });
 
+// Nueva función: reemplazar la palabra más repetida
+botonReemplazar.addEventListener('click', () => {
+  const texto = bloqueTexto.value.trim();
+  const palabraNueva = nuevaPalabra.value.trim();
+
+  if (texto === '' || palabraNueva === '') {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Campos vacíos',
+      text: 'Debes ingresar texto y una nueva palabra para reemplazar.',
+      confirmButtonColor: '#4f46e5'
+    });
+    return;
+  }
+
+  // Contar frecuencia de palabras
+  const palabras = texto.toLowerCase().match(/\b[\wáéíóúüñ]+\b/g);
+  const conteo = {};
+
+  palabras.forEach(p => conteo[p] = (conteo[p] || 0) + 1);
+
+  // Obtener palabra más repetida
+  const palabraMasRepetida = Object.keys(conteo).reduce((a, b) => conteo[a] > conteo[b] ? a : b);
+
+  // Reemplazar todas sus apariciones
+  const regex = new RegExp(`\\b${palabraMasRepetida}\\b`, 'gi');
+  const nuevoTexto = texto.replace(regex, palabraNueva);
+
+  bloqueTexto.value = nuevoTexto;
+
+  resultado.innerHTML = `<p>${nuevoTexto.replace(new RegExp(`(${palabraNueva})`, 'gi'), '<mark>$1</mark>')}</p>`;
+
+  Swal.fire({
+    icon: 'success',
+    title: 'Reemplazo realizado',
+    text: `La palabra "${palabraMasRepetida}" fue reemplazada por "${palabraNueva}".`,
+    confirmButtonColor: '#4f46e5'
+  });
+});
+
 // Botón limpiar
 botonLimpiar.addEventListener('click', () => {
   bloqueTexto.value = '';
   inputPalabra.value = '';
+  nuevaPalabra.value = '';
   resultado.innerHTML = '<p class="text-muted text-center">Aquí aparecerá el texto con la palabra resaltada.</p>';
   contador.textContent = '';
 });
